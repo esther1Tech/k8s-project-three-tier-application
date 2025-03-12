@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+
+  labels:
+    app: k8s-frontend-app
+  name: k8s-frontend-app
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-frontend-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: k8s-frontend-app
+    spec:
+      containers:
+      - image: idrisniyi94/k8s-frontend-app:stable-v1
+        name: k8s-frontend-app
+        ports:
+        - containerPort: 3000
+        resources: {}
+        env:
+        - name: BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-frontend-config
+              key: BACKEND_URL
+

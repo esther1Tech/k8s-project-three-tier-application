@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8s-backend-app
+  name: k8s-backend-app
+  namespace: project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-backend-app
+  template:
+    metadata:
+      labels:
+        app: k8s-backend-app
+    spec:
+      containers:
+      - image: idrisniyi94/k8s-backend-app:stable-v1
+        name: k8s-backend-app
+        ports:
+        - containerPort: 5000
+        resources: {}
+        envFrom:
+        - secretRef:
+            name: k8s-backend-secret
+
