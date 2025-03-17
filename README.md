@@ -13,7 +13,6 @@ It includes:
 
 - Kubernetes deployment for each tier.
 - Service discovery using Kubernetes Services.
-- Load balancing and auto-scaling.
 - Persistent storage for database components.
 - Security best practices (RBAC, Network Policies, etc.).
 
